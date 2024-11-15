@@ -47,10 +47,11 @@ describe("test Point", () => {
 
     it("test get envelope", () => {
         const p = new Point();
-        const e = new Point([3.0,4.0]);
+        const a = new Point([3.0,4.0]);
+      
     
         expect(p.getEnvelope().isEmpty())
-        expect(!e.getEnvelope().isEmpty())
+        expect(!a.getEnvelope().isEmpty())
     });
     
 });

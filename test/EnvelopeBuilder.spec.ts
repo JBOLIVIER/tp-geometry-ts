@@ -22,10 +22,10 @@ describe("test EnvelopeBuilder", () => {
         const envB = new EnvelopeBuilder();
         envB.insert([0.0,1.0])
         let env =  envB.build()
-        expect(env.getXmax()).to.equal(1.0);
+        expect(env.getXmax()).to.equal(0.0);
         expect(env.getYmax()).to.equal(1.0);
         expect(env.getXmin()).to.equal(0.0);
-        expect(env.getYmin()).to.equal(0.0);
+        expect(env.getYmin()).to.equal(1.0);
     });
     
 

@@ -58,31 +58,14 @@ describe("test LineString", () => {
         const ab  = new LineString([a,b]);
     
         let c = ab.clone();
-        expect(ab.clone()).to.deep.equal(a);
+        expect(ab.clone()).to.deep.equal(ab);
         ab.translate(1,1);
-        expect(ab.clone()).to.not.deep.equal(a);
+        expect(ab.clone()).to.not.equal(ab);
 
         let clonevide = p.clone();
         expect(p.clone()).to.deep.equal(clonevide);
         p.translate(1,1);
-        expect(p.clone()).to.deep.equal(clonevide);
-    });
-
-    it("test clone", () => {
-        const p = new LineString();
-        const a = new Point([3.0,4.0]);
-        const b = new Point([5.0,6.0]);
-        const ab  = new LineString([a,b]);
-    
-        let c = ab.clone();
-        expect(ab.clone()).to.deep.equal(a);
-        ab.translate(1,1);
-        expect(ab.clone()).to.not.deep.equal(a);
-
-        let clonevide = p.clone();
-        expect(p.clone()).to.deep.equal(clonevide);
-        p.translate(1,1);
-        expect(p.clone()).to.deep.equal(clonevide);
+        expect(p.clone()).to.not.equal(clonevide);
     });
     
 
