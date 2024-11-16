@@ -10,7 +10,7 @@ export default class Envelope {
         this.topRight = topRight ? topRight : [NaN,NaN];
     }
     isEmpty() : Boolean {
-        return this.topRight.length === 0 && this.bottomLeft.length === 0;    
+        return this.topRight.length === 0;    
     }
 
     getXmin() : number {

@@ -35,7 +35,7 @@ class WktVisitor implements GeometryVisitor {
     }
     visitGeometryCollection(geometrycollection : GeometryCollection) {
         if (geometrycollection.isEmpty()) {
-            this.buffer = "EMPTY GEOMETRY COLLECTION";
+            this.buffer = "GEOMETRY COLLECTION EMPTY";
         }
         else {
             let wkttxt = "GEOMETRY COLLECTION("

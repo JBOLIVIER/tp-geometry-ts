@@ -22,10 +22,11 @@ describe("test LineString", () => {
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab = new LineString([a,b]);
-    
-        expect(ab.getPointN(0)).to.equal(a);
-        expect(ab.getPointN(1)).to.equal(b);
-        expect(ab.getNumPoints()).to.equal(2);
+        const LineVide =  new LineString();
+        expect(ab.getPointN(0)).to.deep.equal(a);
+        expect(ab.getPointN(1)).to.deep.equal(b);
+        expect(ab.getNumPoints()).to.deep.equal(2);
+        expect(LineVide.getNumPoints()).to.deep.equal(0);
     });
 
     it("test emptiness", () => {
@@ -47,7 +48,7 @@ describe("test LineString", () => {
         a.translate(1,1);
         b.translate(1,1);
         ab.translate(1,1);
-        expect(ab.getPointN(0)).to.equal(a);
+        expect(ab.getPointN(0)).to.deep.equal(a);
         
     });
 

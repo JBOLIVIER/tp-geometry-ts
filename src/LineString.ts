@@ -13,7 +13,16 @@ export default class LineString extends AbstractGeometry{
     
     constructor(_points?: Array<Point>) {
         super();
-        this.points = _points ? _points : [];
+        if (_points) {
+            const ListPoint =[];
+            for (let i =0; i<_points.length; i++){
+                ListPoint.push(_points[i].clone())
+            }
+            this.points = ListPoint;
+        }
+        else {
+            this.points = [];
+        }
     }
 
     accept(visitor: GeometryVisitor): void {
