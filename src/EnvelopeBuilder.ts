@@ -1,5 +1,6 @@
 import Coordinate from "./Coordinate";
 import Envelope from "./Envelope";
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 import LineString from "./LineString";
 import Point from "./Point";
@@ -14,6 +15,12 @@ export default class EnvelopeBuilder implements GeometryVisitor{
         if (!linestring.isEmpty()){
             for (let i = 0; i<linestring.getNumPoints(); i++ )
                 this.insert(linestring.getPointN(i).getCoordinate());
+        }
+    }
+    visitGeometryCollection(geometries: GeometryCollection) : void {
+        if (!geometries.isEmpty()){
+            for (let i = 0; i<geometries.getNumGeometries(); i++ )
+                geometries.getGeometryN(i).accept(this);
         }
     }
 

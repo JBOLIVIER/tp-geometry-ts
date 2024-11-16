@@ -18,18 +18,15 @@ export default class LineString extends AbstractGeometry{
 
     accept(visitor: GeometryVisitor): void {
         visitor.visitLineString(this);
-    }
-  
-    
-   
+    }  
 
     clone(): Geometry {
         let c_points = [];
         this.points.forEach(element => {
             c_points.push(element.clone());
         });
-        let b = new LineString(c_points);
-        return b;
+        let copy = new LineString(c_points);
+        return copy;
     }
 
     translate(dx: number, dy: number): void {

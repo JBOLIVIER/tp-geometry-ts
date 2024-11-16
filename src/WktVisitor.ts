@@ -1,3 +1,4 @@
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 import LineString from "./LineString";
 import Point from "./Point";
@@ -7,20 +8,18 @@ class WktVisitor implements GeometryVisitor {
     buffer : String;
 
     visitPoint(point: Point) {
-        // let wkttxt = new WktWriter();
-        // this.buffer = wkttxt.write(point);
+        
         if (point.isEmpty()) {
-            this.buffer = "EMPTY"
+            this.buffer = "POINT EMPTY";
         }
         else {
             this.buffer = "POINT(" + point.getCoordinate()[0] +" "+ point.getCoordinate()[1] +")";
         }
     }
     visitLineString(linestring: LineString) {
-        // let wkttxt = new WktWriter();
-        // this.buffer = wkttxt.write(linestring);
+        
         if (linestring.isEmpty()) {
-            this.buffer = "EMPTY"
+            this.buffer = "LINESTRING EMPTY";
         }
         else {
             let wkttxt = "LINESTRING("
@@ -32,6 +31,25 @@ class WktVisitor implements GeometryVisitor {
             }
             wkttxt += ")"
             this.buffer = wkttxt;
+        }
+    }
+    visitGeometryCollection(geometrycollection : GeometryCollection) {
+        if (geometrycollection.isEmpty()) {
+            this.buffer = "EMPTY GEOMETRY COLLECTION";
+        }
+        else {
+            let wkttxt = "GEOMETRY COLLECTION("
+            
+            for (let i = 0; i < geometrycollection.getNumGeometries(); i++) {
+                let visitor = new WktVisitor()
+                geometrycollection.getGeometryN(i).accept(visitor);
+                wkttxt += visitor.getResult();
+
+                if (i != geometrycollection.getNumGeometries()-1) {
+                    wkttxt += ",";
+                }
+            }
+            this.buffer = wkttxt +=")";
         }
     }
     getResult() : String {

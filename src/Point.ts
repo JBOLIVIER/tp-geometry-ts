@@ -20,8 +20,8 @@ export default class Point extends AbstractGeometry{
 
 
   clone(): Geometry {
-    let b = this.isEmpty() ? new Point() : new Point([this.x(),this.y()]);
-    return b;
+    let copy = this.isEmpty() ? new Point() : new Point([this.x(),this.y()]);
+    return copy;
   }
 
   translate(dx: number, dy: number): void {

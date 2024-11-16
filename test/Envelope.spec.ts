@@ -25,9 +25,9 @@ describe("test Envelope", () => {
         expect(env.toString())
     });
     it("test Emptiness", () => {
-        const envv = new Envelope();
+        const envVide = new Envelope();
         const env = new Envelope([0.0,0.0],[1.0,1.0]);
-        expect(envv.isEmpty())
+        expect(envVide.isEmpty())
         expect(!env.isEmpty())
 
     });

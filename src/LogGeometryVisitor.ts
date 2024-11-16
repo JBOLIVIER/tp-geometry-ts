@@ -1,8 +1,12 @@
+import GeometryCollection from "./GeometryCollection";
 import GeometryVisitor from "./GeometryVisitor";
 import LineString from "./LineString";
 import Point from "./Point";
 
 export default class LogGeometryVisitor implements GeometryVisitor{
+    visitGeometryCollection(geometries: GeometryCollection) {
+        throw new Error("Method not implemented.");
+    }
     visitPoint(point: Point) {
         console.log( point.isEmpty() ? "Je suis une point vide" : "je suis un point avec x=" + point.x() +" et y=" + point.y() +".");                     
     }

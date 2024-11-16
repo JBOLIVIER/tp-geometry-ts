@@ -7,14 +7,14 @@ import LineString from "../src/LineString";
 describe("test Wktvisitor", () => {
     it("test getResult", () => {
         const pvide =  new Point()
-        const p = new LineString();
+        const emptyline= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab  = new LineString([a,b]);
         
-        expect(pvide.asText()).to.equal("EMPTY");
+        expect(pvide.asText()).to.equal("POINT EMPTY");
         
-        expect(p.asText()).to.equal("EMPTY");
+        expect(emptyline.asText()).to.equal("LINESTRING EMPTY");
       
         expect(a.asText()).to.equal("POINT(3 4)");
       
@@ -24,14 +24,14 @@ describe("test Wktvisitor", () => {
 
     it("test get Envelope ", () => {
         const pvide =  new Point()
-        const p = new LineString();
+        const emptyline= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab  = new LineString([a,b]);
         
         expect(pvide.getEnvelope().isEmpty())
         expect(!a.getEnvelope().isEmpty())
-        expect(p.getEnvelope().isEmpty())
+        expect(emptyline.getEnvelope().isEmpty())
         expect(!ab.getEnvelope().isEmpty())
         
     });

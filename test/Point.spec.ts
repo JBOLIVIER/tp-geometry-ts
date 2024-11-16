@@ -17,32 +17,32 @@ describe("test Point", () => {
     });
     
     it("test constructor with coordinates", () => {
-        const e = new Point([3.0,4.0]);
-        expect(e.getCoordinate()).to.deep.equal([3.0,4.0]);
-        expect(e.x()).to.equal(3.0);
-        expect(e.y()).to.equal(4.0);   
+        const p = new Point([3.0,4.0]);
+        expect(p.getCoordinate()).to.deep.equal([3.0,4.0]);
+        expect(p.x()).to.equal(3.0);
+        expect(p.y()).to.equal(4.0);   
     });
     it("test emptiness", () => {
-        const e = new Point([3.0,4.0]);
-        expect(e.isEmpty()).to.equal(false);
+        const p = new Point([3.0,4.0]);
+        expect(p.isEmpty()).to.equal(false);
     });
     
     it("test translate", () => {
-        const e = new Point([3.0,4.0]);
-        e.translate(1,1);
-        expect(e.x()).to.equal(4.0);
-        expect(e.y()).to.equal(5.0);
+        const p = new Point([3.0,4.0]);
+        p.translate(1,1);
+        expect(p.x()).to.equal(4.0);
+        expect(p.y()).to.equal(5.0);
     });
 
     it("test clone", () => {
-        const e = new Point([3.0,4.0]);
-        let a = e.clone();
-        expect(e.clone()).to.deep.equal(a);
-        e.translate(1,1);
-        expect(e.clone()).to.not.deep.equal(a);
-        const p = new Point();
-        let b = p.clone();
-        expect(b).to.deep.equal(new Point())
+        const p = new Point([3.0,4.0]);
+        let copy = p.clone();
+        expect(p.clone()).to.deep.equal(copy);
+        p.translate(1,1);
+        expect(p.clone()).to.not.deep.equal(copy);
+        const pvide = new Point();
+        let othercopy = pvide.clone();
+        expect(othercopy).to.deep.equal(new Point())
     });
 
     it("test get envelope", () => {

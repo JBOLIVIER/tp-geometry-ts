@@ -5,16 +5,16 @@ import LineString from "../src/LineString";
 describe("test LineString", () => {
     
     it("test default constructor", () => {
-        const p = new LineString();
-        expect(p.getNumPoints()).to.equal(0);
-        expect(Number.isNaN(p.getPointN(5)));
-        expect(Number.isNaN(p.getPointN(0)));
-        expect(p.isEmpty()).to.equal(true);
-        p.translate(1,1)
-        expect(Number.isNaN(p.getPointN(5)));
-        expect(Number.isNaN(p.getPointN(0)));
-        expect(p.getType()).to.equal('LineString')
-        expect(p.getNumPoints()).to.equal(0);
+        const Line= new LineString();
+        expect(Line.getNumPoints()).to.equal(0);
+        expect(Number.isNaN(Line.getPointN(5)));
+        expect(Number.isNaN(Line.getPointN(0)));
+        expect(Line.isEmpty()).to.equal(true);
+        Line.translate(1,1)
+        expect(Number.isNaN(Line.getPointN(5)));
+        expect(Number.isNaN(Line.getPointN(0)));
+        expect(Line.getType()).to.equal('LineString')
+        expect(Line.getNumPoints()).to.equal(0);
     });
 
    
@@ -29,17 +29,17 @@ describe("test LineString", () => {
     });
 
     it("test emptiness", () => {
-        const p = new LineString();
+        const Line= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab  = new LineString([a,b]);
     
         expect(ab.isEmpty()).to.equal(false);
-        expect(p.isEmpty()).to.equal(true);
+        expect(Line.isEmpty()).to.equal(true);
     });
 
     it("test translate", () => {
-        const p = new LineString();
+        const Line= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab  = new LineString([a,b]);
@@ -52,7 +52,7 @@ describe("test LineString", () => {
     });
 
     it("test clone", () => {
-        const p = new LineString();
+        const Line= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab  = new LineString([a,b]);
@@ -62,20 +62,20 @@ describe("test LineString", () => {
         ab.translate(1,1);
         expect(ab.clone()).to.not.equal(ab);
 
-        let clonevide = p.clone();
-        expect(p.clone()).to.deep.equal(clonevide);
-        p.translate(1,1);
-        expect(p.clone()).to.not.equal(clonevide);
+        let clonevide = Line.clone();
+        expect(Line.clone()).to.deep.equal(clonevide);
+        Line.translate(1,1);
+        expect(Line.clone()).to.not.equal(clonevide);
     });
     
 
     it("test get envelope", () => {
-        const p = new LineString();
+        const Line= new LineString();
         const a = new Point([3.0,4.0]);
         const b = new Point([5.0,6.0]);
         const ab = new LineString([a,b]);
     
-        expect(p.getEnvelope().isEmpty())
+        expect(Line.getEnvelope().isEmpty())
         expect(!ab.getEnvelope().isEmpty())
     });
    
